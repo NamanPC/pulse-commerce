@@ -19,4 +19,15 @@ export const getProducts = async () => {
   return response.data;
 };
 
+// Auth API helpers (DEV-101)
+export const loginUser = async (credentials) => {
+  const response = await apiClient.post('/auth/login', credentials);
+  return response.data;
+};
+
+export const registerUser = async (userData) => {
+  const response = await apiClient.post('/auth/register', userData);
+  return response.data;
+};
+
 export default apiClient;
