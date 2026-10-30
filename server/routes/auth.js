@@ -10,6 +10,13 @@ router.post('/register', (req, res) => {
   if (!email || !password) {
     return res.status(400).json({ error: 'Email and password required' });
   }
+
+  // Check for duplicate user (DEV-101 Code Review Feedback)
+  const existingUser = users.find(u => u.email === email);
+  if (existingUser) {
+    return res.status(409).json({ error: 'User already exists with this email' });
+  }
+
   const newUser = { id: users.length + 1, email, createdAt: new Date() };
   users.push(newUser);
   res.status(201).json({ message: 'User registered successfully', user: newUser });
