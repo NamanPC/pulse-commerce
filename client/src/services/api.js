@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.VITE_API_URL || 'http://localhost:5000/api';
+// SEC-305: Standardized on v1 API prefix
+const API_BASE_URL = process.env.VITE_API_URL || 'http://localhost:5000/api/v1';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
+    'X-Client-Version': '2.0.0',
   },
 });
 
