@@ -30,4 +30,10 @@ export const registerUser = async (userData) => {
   return response.data;
 };
 
+// Payment API helpers (DEV-201)
+export const processPayment = async (paymentData) => {
+  const response = await apiClient.post('/payment/checkout', paymentData);
+  return response.data;
+};
+
 export default apiClient;
